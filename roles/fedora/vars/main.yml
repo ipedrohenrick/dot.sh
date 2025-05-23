@@ -1,0 +1,49 @@
+---
+cli_tools:
+  - bat
+  - fd-find
+  - fzf
+  - gh
+  - htop
+  - neovim
+  - nodejs
+  - python3-pip
+  - python3-neovim
+  - ripgrep
+  - tmux
+  - uv
+  - vagrant
+  - zoxide
+  - zsh
+
+addons:
+  - libreoffice-langpack-pt-BR
+  - dnf-plugins-core
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+
+flatpaks:
+  - com.bitwarden.desktop
+  - com.discordapp.Discord
+  - com.transmissionbt.Transmission
+  - io.beekeeperstudio.Studio
+  - io.ente.auth
+  - io.github.fabrialberio.pinapp
+  - io.gitlab.adhami3310.Impression
+  - org.filezillaproject.Filezilla
+  - org.videolan.VLC
+  - md.obsidian.Obsidian
+
+desktop_apps:
+  - google-chrome-stable
+
+clean_apps:
+  - gnome-abrt
+  - rhythmbox
+  - ptyxis
+  - mediawriter

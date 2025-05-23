@@ -1,0 +1,7 @@
+---
+- name: Uninstall unused apps
+  dnf:
+    name: '{{ item }}'
+    state: absent
+  loop: '{{ clean_apps }}'
+  become: true

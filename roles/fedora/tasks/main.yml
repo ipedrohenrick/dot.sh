@@ -1,0 +1,28 @@
+---
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+  become: true
+
+- name: Install add-ons
+  dnf:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ addons }}}'
+  become: true
+
+- name: Install ghostty terminal
+  include_tasks: ghostty.yml
+
+- name: Install docker
+  include_tasks: docker.yml
+
+- name: Install CLI tools
+  include_tasks: cli.yml
+
+- name: Config git
+  include_tasks: git.yml
+
+- name: Config neovim
+  include_tasks: nvim.yml

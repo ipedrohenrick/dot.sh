@@ -1,0 +1,7 @@
+---
+- name: Install CLI tools
+  dnf:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ cli_tools }}}'
+  become: true

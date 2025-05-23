@@ -1,0 +1,14 @@
+---
+- name: Install flatpak apps
+  communit.general.flatpak:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ flatpaks }}'
+  become: true
+
+- name: Install Desktop apps
+  dnf:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ desktop_apps }}}'
+  become: true

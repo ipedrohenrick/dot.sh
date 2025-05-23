@@ -1,0 +1,11 @@
+---
+- name: Clone the neovim configuration repository
+  git:
+    repo: 'https://github.com/ph777z/configs.nvim.git'
+    dest: '~/.config/nvim'
+
+- name: Install neovim npm package
+  community.general.npm:
+    name: neovim
+    global: true
+  become: true
