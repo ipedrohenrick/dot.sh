@@ -1,0 +1,3 @@
+[all]
+daten-ses     ansible_connection=local
+thinkpad-l14  ansible_connection=local

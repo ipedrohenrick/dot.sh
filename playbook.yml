@@ -1,7 +1,5 @@
 ---
 - name: Config Fedora Linux
-  hosts:
-    - workstation
-  become: true
+  hosts: all
   roles:
     - fedora
