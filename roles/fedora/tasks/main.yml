@@ -9,7 +9,7 @@
   dnf:
     name: '{{ item }}'
     state: present
-  loop: '{{ addons }}}'
+  loop: '{{ addons }}'
   become: true
 
 - name: Install ghostty terminal

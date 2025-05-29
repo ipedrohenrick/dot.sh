@@ -5,3 +5,29 @@
     state: present
   loop: '{{ cli_tools }}}'
   become: true
+
+- name: Config zsh and tmux
+  copy:
+    src: '{{ role_path }}/files/{{ item }}'
+    dest: '~./{{ item }}'
+    mode: '644'
+  loop:
+    - .zshrc
+    - .tmux
+
+- name: Config global variables
+  copy:
+    src: '{{ role_path }}/files/custom-envs.sh'
+    dest: '/etc/profile.d/custom-envs.sh'
+    mode: '777'
+  become: true
+
+- name: Add mise repository
+  command: dnf config-manager addrepo --from-repofile=https://mise.jdx.dev/rpm/mise.repo
+  become: true
+
+- name: Install mise
+  dnf:
+    name: 'mise'
+    state: present
+  become: true
