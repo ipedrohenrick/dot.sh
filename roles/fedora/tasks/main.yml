@@ -26,3 +26,6 @@
 
 - name: Config neovim
   include_tasks: nvim.yml
+
+- name: Config virtualization
+  include_tasks: vms.yml
