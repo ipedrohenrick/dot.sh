@@ -24,6 +24,8 @@
 
 - name: Add mise repository
   command: dnf config-manager addrepo --from-repofile=https://mise.jdx.dev/rpm/mise.repo
+  args:
+    creates: /etc/yum.repos.d/mise.repo
   become: true
 
 - name: Install mise

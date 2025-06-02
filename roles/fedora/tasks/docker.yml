@@ -1,6 +1,8 @@
 ---
 - name: Add docker repository
   command: dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
   become: true
 
 - name: Install docker packages
