@@ -5,3 +5,9 @@
     state: absent
   loop: '{{ clean_apps }}'
   become: true
+
+- name: Disable pycharm copr
+  community.general.copr:
+    state: disabled
+    name: phracek/PyCharm
+  become: true
