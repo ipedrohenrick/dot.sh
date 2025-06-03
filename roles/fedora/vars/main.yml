@@ -30,6 +30,7 @@ docker_packages:
 flatpaks:
   - com.bitwarden.desktop
   - com.discordapp.Discord
+  - com.spotify.Client
   - com.transmissionbt.Transmission
   - io.beekeeperstudio.Studio
   - io.ente.auth
