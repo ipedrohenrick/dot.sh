@@ -9,7 +9,7 @@
   dnf:
     name: '{{ item }}'
     state: present
-  loop: '{{ docker_packages }}}'
+  loop: '{{ docker_packages }}'
   become: true
 
 - name: Enable docker service
@@ -17,6 +17,7 @@
     name: docker
     state: started
     enabled: true
+  become: true
 
 - name: Ensure group docker exists
   group:
@@ -29,3 +30,4 @@
     name: "{{ ansible_user }}"
     groups: docker
     append: true
+  become: true

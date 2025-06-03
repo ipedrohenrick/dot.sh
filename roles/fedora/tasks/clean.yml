@@ -11,3 +11,15 @@
     state: disabled
     name: phracek/PyCharm
   become: true
+
+- name: Disable abrt service
+  systemd_service:
+    name: abrtd
+    state: stopped
+    enabled: false
+  become: true
+
+- name: Autoremove unneded packages
+  dnf:
+    autoremove: true
+  become: true

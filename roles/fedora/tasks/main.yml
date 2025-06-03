@@ -29,3 +29,9 @@
 
 - name: Config virtualization
   include_tasks: vms.yml
+
+- name: Install desktop apps
+  include_tasks: desktop.yml
+
+- name: Clean unused apps & configs
+  include_tasks: clean.yml

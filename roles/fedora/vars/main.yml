@@ -43,7 +43,8 @@ desktop_apps:
   - google-chrome-stable
 
 clean_apps:
-  - gnome-abrt
+  - gnome-boxes
   - rhythmbox
   - ptyxis
   - mediawriter
+  - virt-viewer

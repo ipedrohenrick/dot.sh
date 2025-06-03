@@ -3,17 +3,17 @@
   dnf:
     name: '{{ item }}'
     state: present
-  loop: '{{ cli_tools }}}'
+  loop: '{{ cli_tools }}'
   become: true
 
 - name: Config zsh and tmux
   copy:
     src: '{{ role_path }}/files/{{ item }}'
-    dest: '~./{{ item }}'
+    dest: '~/{{ item }}'
     mode: '644'
   loop:
     - .zshrc
-    - .tmux
+    - .tmux.conf
 
 - name: Config global variables
   copy:
