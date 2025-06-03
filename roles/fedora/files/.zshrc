@@ -22,7 +22,7 @@ zinit light Aloxaf/fzf-tab
 autoload -Uz compinit && compinit
 
 
-eval "$(~/.local/bin/mise activate bash)"
+eval "$(mise activate bash)"
 source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
