@@ -24,6 +24,10 @@
 2. Organize menu applications
 3. Set the weather forecast
 
+### Gnome Keyring requesting password
+
+Remove the file `~/.local/share/keyrings/login.keyring`
+
 ## Virt Manager
 
 1. Add qemu/kvm session user connection
