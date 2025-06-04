@@ -12,6 +12,12 @@
   loop: '{{ addons }}'
   become: true
 
+- name: Create config dir
+  file:
+    path: ~/.config
+    state: directory
+    mode: '0755'
+
 - name: Install ghostty terminal
   include_tasks: ghostty.yml
 
