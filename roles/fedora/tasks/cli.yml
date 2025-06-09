@@ -15,6 +15,22 @@
     - .zshrc
     - .tmux.conf
 
+- name: Check if tpm is installed
+  stat:
+    path: '~/.tmux/plugins/tpm'
+  register: tpm_dir
+
+- name: Clone tmux tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: '~/.tmux/plugins/tpm'
+  register: tpm_clone
+  when: not (tpm_dir.stat.exists and tpm_dir.stat.isdir)
+
+- name: Install tpm plugins
+  command: '~/.tmux/plugins/tpm/bin/install_plugins'
+  when: tpm_clone.changed
+
 - name: Config global variables
   copy:
     src: '{{ role_path }}/files/custom-envs.sh'
