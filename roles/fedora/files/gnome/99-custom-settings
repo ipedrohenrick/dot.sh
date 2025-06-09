@@ -1,0 +1,11 @@
+# vi: ft=cfg
+
+[org/gnome/desktop/interface]
+icon-theme='WhiteSur'
+
+[org/gnome/desktop/background]
+picture-uri='/usr/share/backgrounds/gnome/blobs-l.svg'
+picture-uri-dark='/usr/share/backgrounds/gnome/blobs-d.svg'
+
+[org/gnome/shell]
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com']

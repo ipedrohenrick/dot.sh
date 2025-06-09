@@ -1,2 +1,4 @@
+# vi: ft=cfg
+
 [org/gnome/desktop/interface]
 icon-theme='WhiteSur'

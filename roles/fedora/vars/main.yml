@@ -42,9 +42,11 @@ flatpaks:
 
 desktop_apps:
   - google-chrome-stable
+  - gnome-extensions-app
 
 clean_apps:
   - gnome-boxes
+  - gnome-maps
   - rhythmbox
   - ptyxis
   - mediawriter

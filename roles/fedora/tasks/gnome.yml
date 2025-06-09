@@ -1,0 +1,58 @@
+---
+- name: Check if WhiteSur icon theme is installed
+  stat:
+    path: /usr/share/icons/WhiteSur
+  register: whitesur_dir
+
+- name: Clone WhiteSur repo
+  git:
+    repo: https://github.com/vinceliuice/WhiteSur-icon-theme.git
+    dest: /tmp/whitesur
+    version: v2025-02-10
+  register: whitesur_clone
+  when: not (whitesur_dir.stat.exists and whitesur_dir.stat.isdir)
+
+- name: Install WhiteSur icon theme
+  become: true
+  command: /tmp/whitesur/install.sh -a -d /usr/share/icons
+  when: whitesur_clone.changed
+
+- name: Install gnome extensions
+  become: true
+  unarchive:
+    src: '{{ role_path }}/files/gnome/extensions/{{ item }}'
+    dest: /usr/share/gnome-shell/extensions
+    owner: root
+    group: root
+    mode: '755'
+  loop:
+    - appindicatorsupport.zip
+
+- name: Set custom settings in GDM
+  become: true
+  copy:
+    src: '{{ role_path }}/files/gdm/99-custom-settings'
+    dest: '/etc/dconf/db/gdm.d'
+    owner: root
+    group: root
+    mode: '644'
+
+- name: Set custom settings in gnome
+  become: true
+  copy:
+    src: '{{ role_path }}/files/gnome/99-custom-settings'
+    dest: '/etc/dconf/db/local.d/'
+    owner: root
+    group: root
+    mode: '644'
+
+- name: Reset dconf settings
+  command: dconf reset {{ item }}
+  loop:
+    - /org/gnome/desktop/background/picture-uri
+    - /org/gnome/desktop/background/picture-uri-dark
+    - /org/gnome/shell/enabled-extensions
+
+- name: Update dconf
+  become: true
+  command: dconf update

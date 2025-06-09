@@ -1,16 +1,16 @@
 ---
 - name: Upgrade all packages
+  become: true
   dnf:
     name: "*"
     state: latest
-  become: true
 
 - name: Install add-ons
+  become: true
   dnf:
     name: '{{ item }}'
     state: present
   loop: '{{ addons }}'
-  become: true
 
 - name: Create config dir
   file:
@@ -42,5 +42,5 @@
 - name: Clean unused apps & configs
   include_tasks: clean.yml
 
-- name: Install icons
-  include_tasks: icons.yml
+- name: Config gnome
+  include_tasks: gnome.yml
