@@ -3,7 +3,6 @@ cli_tools:
   - bat
   - fd-find
   - fzf
-  - gh
   - htop
   - neovim
   - nodejs
