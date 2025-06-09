@@ -35,3 +35,7 @@ Remove the file `~/.local/share/keyrings/login.keyring`
 ## Discord
 
 1. Log in with your account
+
+## Config ssh keys
+
+1. Copy ssh keys to `~/.ssh` dir
