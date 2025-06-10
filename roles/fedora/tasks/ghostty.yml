@@ -1,15 +1,15 @@
 ---
 - name: Enable ghostty COPR repository
+  become: true
   community.general.copr:
     state: enabled
     name: pgdev/ghostty
-  become: true
 
 - name: Install ghostty
+  become: true
   dnf:
     name: ghostty
     state: present
-  become: true
 
 - name: Create fonts dir
   file:

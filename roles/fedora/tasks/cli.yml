@@ -1,10 +1,10 @@
 ---
 - name: Install CLI tools
+  become: true
   dnf:
     name: '{{ item }}'
     state: present
   loop: '{{ cli_tools }}'
-  become: true
 
 - name: Config zsh and tmux
   copy:
@@ -32,20 +32,44 @@
   when: tpm_clone.changed
 
 - name: Config global variables
+  become: true
   copy:
     src: '{{ role_path }}/files/custom-envs.sh'
     dest: '/etc/profile.d/custom-envs.sh'
     mode: '777'
-  become: true
 
 - name: Add mise repository
+  become: true
   command: dnf config-manager addrepo --from-repofile=https://mise.jdx.dev/rpm/mise.repo
   args:
     creates: /etc/yum.repos.d/mise.repo
-  become: true
 
 - name: Install mise
+  become: true
   dnf:
     name: 'mise'
     state: present
+
+- name: Enable yazi COPR repository
   become: true
+  community.general.copr:
+    state: enabled
+    name: lihaohong/yazi
+
+- name: Install yazi
+  become: true
+  dnf:
+    name: yazi
+    state: present
+
+- name: Enable lazygit COPR repository
+  become: true
+  community.general.copr:
+    state: enabled
+    name: atim/lazygit
+
+- name: Install lazygit
+  become: true
+  dnf:
+    name: lazygit
+    state: present
