@@ -12,3 +12,20 @@
     state: present
   loop: '{{ desktop_apps }}'
   become: true
+
+- name: Install vscode repo
+  become: true
+  yum_repository:
+    name: code
+    description: Visual Studio Code
+    file: vscode
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    enabled: true
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    gpgcheck: true
+
+- name: Install vscode
+  become: true
+  dnf:
+    name: code
+    state: present
