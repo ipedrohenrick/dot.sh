@@ -73,3 +73,15 @@
   dnf:
     name: lazygit
     state: present
+
+- name: Config hashicorp repo
+  become: true
+  command: dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+  args:
+    creates: /etc/yum.repos.d/hashicorp.repo
+
+- name: Install terraform
+  become: true
+  dnf:
+    name: terraform
+    state: present
