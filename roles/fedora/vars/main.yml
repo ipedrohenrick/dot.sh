@@ -1,18 +1,12 @@
 ---
 cli_tools:
-  - bat
-  - fd-find
-  - fzf
   - htop
   - neovim
   - nodejs
   - python3-pip
   - python3-neovim
-  - ripgrep
   - tmux
-  - uv
   - vagrant
-  - zoxide
   - zsh
 
 addons:

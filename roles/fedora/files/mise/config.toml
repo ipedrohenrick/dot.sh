@@ -1,0 +1,11 @@
+[tools]
+# CLI tools
+bat = "latest"
+fd = "latest"
+fzf = "latest"
+lazygit = "latest"
+ripgrep = "latest"
+terraform = "latest"
+uv = "latest"
+yazi = "latest"
+zoxide = "latest"
