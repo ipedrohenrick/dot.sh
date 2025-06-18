@@ -1,0 +1,8 @@
+---
+- name: Enable SSH service
+  become: true
+  systemd_service:
+    name: sshd
+    state: started
+    enabled: true
+  when: activate_ssh | default(false)

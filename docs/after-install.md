@@ -23,6 +23,7 @@
 1. Log in with your google account
 2. Organize menu applications
 3. Set the weather forecast
+4. Enable remote connection with RDP
 
 ### Gnome Keyring requesting password
 
