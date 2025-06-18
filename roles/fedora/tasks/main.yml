@@ -44,3 +44,6 @@
 
 - name: Config gnome
   include_tasks: gnome.yml
+
+- name: Enable remote access
+  include_tasks: remote-access.yml
