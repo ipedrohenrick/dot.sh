@@ -47,3 +47,7 @@
 
 - name: Enable remote access
   include_tasks: remote-access.yml
+
+- name: Enable Games
+  include_tasks: games.yml
+  when: enable_games

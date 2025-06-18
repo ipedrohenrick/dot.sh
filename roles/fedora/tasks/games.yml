@@ -1,0 +1,7 @@
+---
+- name: Install Steam
+  become: true
+  dnf:
+    name: steam
+    state: present
+
