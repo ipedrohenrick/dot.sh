@@ -1,0 +1,12 @@
+---
+- name: Config Virtualbox repo
+  become: true
+  command: dnf config-manager addrepo --from-repofile=https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+  args:
+    creates: /etc/yum.repos.d/virtualbox.repo
+
+- name: Install VirtualBox
+  become: true
+  dnf:
+    name: VirtualBox-7.1
+    state: present

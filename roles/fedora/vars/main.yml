@@ -1,12 +1,19 @@
 ---
 cli_tools:
+  - bat
+  - fd-find
+  - fzf
   - htop
   - neovim
   - nodejs
   - python3-pip
   - python3-neovim
+  - ripgrep
   - tmux
+  - terraform
+  - uv
   - vagrant
+  - zoxide
   - zsh
 
 addons:
@@ -37,6 +44,7 @@ desktop_apps:
   - google-chrome-stable
   - gnome-extensions-app
   - remmina
+  - code
 
 clean_apps:
   - gnome-boxes
@@ -44,5 +52,4 @@ clean_apps:
   - rhythmbox
   - ptyxis
   - mediawriter
-  - virt-viewer
   - gnome-connections

@@ -6,13 +6,6 @@
   loop: '{{ flatpaks }}'
   become: true
 
-- name: Install Desktop apps
-  dnf:
-    name: '{{ item }}'
-    state: present
-  loop: '{{ desktop_apps }}'
-  become: true
-
 - name: Install vscode repo
   become: true
   yum_repository:
@@ -24,8 +17,9 @@
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     gpgcheck: true
 
-- name: Install vscode
-  become: true
+- name: Install Desktop apps
   dnf:
-    name: code
+    name: '{{ item }}'
     state: present
+  loop: '{{ desktop_apps }}'
+  become: true

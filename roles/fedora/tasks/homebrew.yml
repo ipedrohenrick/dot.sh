@@ -1,0 +1,15 @@
+---
+- name: Install requirements
+  become: true
+  dnf:
+    name: '@Development Tools'
+    state: present
+
+- name: Install Homebrew
+  shell: |
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  args:
+    executable: /bin/bash
+  environment:
+    NONINTERACTIVE: 1
+  when: not /home/linuxbrew/.linuxbrew is directory

@@ -27,14 +27,8 @@
 - name: Install CLI tools
   include_tasks: cli.yml
 
-- name: Config git
-  include_tasks: git.yml
-
-- name: Config neovim
-  include_tasks: nvim.yml
-
-- name: Config virtualization
-  include_tasks: vms.yml
+- name: Install Homebrew
+  include_tasks: homebrew.yml
 
 - name: Install desktop apps
   include_tasks: desktop.yml
@@ -48,6 +42,5 @@
 - name: Enable remote access
   include_tasks: remote-access.yml
 
-- name: Enable Games
-  include_tasks: games.yml
-  when: enable_games
+- name: Install VirtualBox
+  include_tasks: virtualbox.yml
