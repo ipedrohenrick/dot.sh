@@ -28,15 +28,18 @@
     src: '{{ role_path }}/files/bin/'
     dest: '/usr/bin/'
 
-# TMUX
-- name: Config ZSH and Tmux
+- name: Config ZSH
   copy:
-    src: '{{ role_path }}/files/{{ item }}'
-    dest: '~/{{ item }}'
+    src: '{{ role_path }}/files/zsh/.zshrc'
+    dest: '~/.zshrc'
     mode: '644'
-  loop:
-    - zsh/.zshrc
-    - tmux/.tmux.conf
+
+# TMUX
+- name: Config Tmux
+  copy:
+    src: '{{ role_path }}/files/tmux/.tmux.conf'
+    dest: '~/.tmux.conf'
+    mode: '644'
 
 - name: Check if Tmux Package Manager(TPM) is installed
   stat:
