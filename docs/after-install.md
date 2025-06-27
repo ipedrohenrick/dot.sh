@@ -28,10 +28,6 @@
 
 Remove the file `~/.local/share/keyrings/login.keyring`
 
-## Virt Manager
-
-1. Add qemu/kvm session user connection
-
 ## Discord
 
 1. Log in with your account
