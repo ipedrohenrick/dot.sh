@@ -15,7 +15,6 @@
 1. Log in with your account
 2. Log in Firefox Relay
 3. Log in Bitwarden extension and setup pin password
-4. Log in Firefox pocket
 5. Log in Firefox monitor
 
 ## Gnome
