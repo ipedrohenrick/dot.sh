@@ -27,9 +27,6 @@
 - name: Install CLI tools
   include_tasks: cli.yml
 
-- name: Install Homebrew
-  include_tasks: homebrew.yml
-
 - name: Install desktop apps
   include_tasks: desktop.yml
 
