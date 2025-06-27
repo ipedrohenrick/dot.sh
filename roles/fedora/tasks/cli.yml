@@ -27,6 +27,7 @@
   copy:
     src: '{{ role_path }}/files/bin/'
     dest: '/usr/bin/'
+    mode: '755'
 
 - name: Config ZSH
   copy:
