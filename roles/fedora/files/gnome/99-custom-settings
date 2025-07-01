@@ -2,10 +2,74 @@
 
 [org/gnome/desktop/interface]
 icon-theme='WhiteSur'
+font-name='Inter 11'
+document-font-name='Inter 11'
 
 [org/gnome/desktop/background]
 picture-uri='/usr/share/backgrounds/gnome/blobs-l.svg'
 picture-uri-dark='/usr/share/backgrounds/gnome/blobs-d.svg'
 
 [org/gnome/shell]
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com']
+
+[org/gnome/shell/extensions/blur-my-shell]
+settings-version=2
+
+[org/gnome/shell/extensions/blur-my-shell/appfolder]
+brightness=0.59999999999999998
+sigma=30
+
+[org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/dash-to-dock]
+blur=true
+brightness=0.59999999999999998
+pipeline='pipeline_default_rounded'
+sigma=30
+static-blur=true
+style-dash-to-dock=0
+
+[org/gnome/shell/extensions/blur-my-shell/lockscreen]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/overview]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/panel]
+brightness=0.59999999999999998
+pipeline='pipeline_default'
+sigma=30
+
+[org/gnome/shell/extensions/blur-my-shell/screenshot]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/window-list]
+brightness=0.59999999999999998
+sigma=30
+
+[org/gnome/shell/extensions/dash-to-dock]
+apply-custom-theme=true
+background-opacity=0.80000000000000004
+custom-theme-shrink=false
+dash-max-icon-size=40
+disable-overview-on-startup=false
+dock-fixed=false
+dock-position='BOTTOM'
+height-fraction=0.90000000000000002
+icon-size-fixed=false
+isolate-locations=true
+isolate-monitors=false
+isolate-workspaces=false
+preferred-monitor=-2
+preferred-monitor-by-connector='DP-1'
+preview-size-scale=0.0
+scroll-to-focused-application=true
+show-favorites=true
+show-icons-emblems=false
+show-mounts-network=false
+show-mounts-only-mounted=true
+show-running=true
+show-show-apps-button=false
+show-trash=false
+workspace-agnostic-urgent-windows=true

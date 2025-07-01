@@ -20,6 +20,9 @@ addons:
   - libreoffice-langpack-pt-BR
   - dnf-plugins-core
   - rsms-inter-fonts
+  - gnome-shell-extension-blur-my-shell
+  - gnome-shell-extension-dash-to-dock
+  - gnome-shell-extension-appindicator
 
 docker_packages:
   - docker-ce

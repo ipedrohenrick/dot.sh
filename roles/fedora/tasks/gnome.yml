@@ -17,17 +17,6 @@
   command: /tmp/whitesur/install.sh -a -d /usr/share/icons
   when: whitesur_clone.changed
 
-- name: Install gnome extensions
-  become: true
-  unarchive:
-    src: '{{ role_path }}/files/gnome/extensions/{{ item }}'
-    dest: /usr/share/gnome-shell/extensions
-    owner: root
-    group: root
-    mode: '755'
-  loop:
-    - appindicatorsupport.zip
-
 - name: Set custom settings in GDM
   become: true
   copy:
