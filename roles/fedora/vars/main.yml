@@ -19,6 +19,7 @@ cli_tools:
 addons:
   - libreoffice-langpack-pt-BR
   - dnf-plugins-core
+  - rsms-inter-fonts
 
 docker_packages:
   - docker-ce
@@ -41,10 +42,12 @@ flatpaks:
   - md.obsidian.Obsidian
 
 desktop_apps:
+  - alacritty
+  - code
   - google-chrome-stable
   - gnome-extensions-app
+  - gnome-tweaks
   - remmina
-  - code
 
 clean_apps:
   - gnome-boxes

@@ -1,0 +1,23 @@
+[general]
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml",
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 5, y = 5 }
+decorations_theme_variant = "Dark"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size = 12
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
+blink_interval = 500
+blink_timeout = 0
+
+[terminal]
+shell = { program = "/bin/zsh" }

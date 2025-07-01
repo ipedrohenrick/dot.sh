@@ -23,3 +23,14 @@
     state: present
   loop: '{{ desktop_apps }}'
   become: true
+
+- name: Check if Alacritty configuration is installed
+  stat:
+    path: '~/.config/alacritty' 
+  register: alacritty_config
+
+- name: Config Alacritty 
+  copy:
+    src: '{{ role_path }}/files/alacritty/'
+    dest: '~/.config/alacritty/'
+  when: not (alacritty_config.stat.exists and alacritty_config.stat.isdir)
