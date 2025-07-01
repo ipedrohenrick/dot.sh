@@ -50,9 +50,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 alias l='ls --color'
 alias ll='ls -l --color'
 alias lla='ls -la --color'
-# alias el='eza --icons'
-# alias ell='eza -l --icons'
-# alias ella='eza -la --icons'
+alias el='eza --icons'
+alias ell='eza -l --icons'
+alias ella='eza -la --icons'
 alias pyserver='python3 -m http.server'
 
 venv() {
