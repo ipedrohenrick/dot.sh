@@ -56,6 +56,5 @@ clean_apps:
   - gnome-boxes
   - gnome-maps
   - rhythmbox
-  - ptyxis
   - mediawriter
   - gnome-connections
