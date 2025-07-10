@@ -1,6 +1,5 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# vi: ft=sh
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -20,7 +19,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 autoload -Uz compinit && compinit
-
 
 eval "$(mise activate bash)"
 source <(fzf --zsh)
@@ -59,10 +57,5 @@ venv() {
   if [ ! -d ./.venv ];then
     python3 -m venv .venv
   fi
-
   source ./.venv/bin/activate
-}
-
-ssh-conn() {
-  ssh $(grep -P "^Host ([^*]+)$" $HOME/.ssh/config | sed 's/Host //' | fzf)
 }
