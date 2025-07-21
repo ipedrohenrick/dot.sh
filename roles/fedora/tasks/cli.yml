@@ -44,9 +44,12 @@
 
 - name: Config ZSH
   copy:
-    src: '{{ role_path }}/files/zsh/.zshrc'
-    dest: '~/.zshrc'
+    src: '{{ role_path }}/files/zsh/{{ item }}'
+    dest: '~/{{ item }}'
     mode: '644'
+  loop:
+    - .zshrc
+    - .p10k.zsh
 
 # TMUX
 - name: Config Tmux
@@ -79,7 +82,7 @@
 
 - name: Clone the neovim configuration repository
   git:
-    repo: 'https://github.com/ph777z/configs.nvim.git'
+    repo: 'https://github.com/ipedrohenrick/nvim.lua.git'
     dest: '~/.config/nvim'
   when: not (nvim_config.stat.exists and nvim_config.stat.isdir)
 
