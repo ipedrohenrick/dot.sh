@@ -4,13 +4,19 @@
     path: /usr/share/icons/WhiteSur
   register: whitesur_dir
 
+- name: Confirm reinstallation of icon theme
+  pause:
+    prompt: Reinstall WhiteSur icon theme?(Y/N)
+    echo: true
+  when: whitesur_dir.stat.exists and whitesur_dir.stat.isdir
+  register: reinstall_white_sur_icon_theme
+
 - name: Clone WhiteSur repo
   git:
     repo: https://github.com/vinceliuice/WhiteSur-icon-theme.git
     dest: /tmp/whitesur
-    version: v2025-02-10
   register: whitesur_clone
-  when: not (whitesur_dir.stat.exists and whitesur_dir.stat.isdir)
+  when: reinstall_white_sur_icon_theme.user_input|lower == 'y'
 
 - name: Install WhiteSur icon theme
   become: true
