@@ -47,6 +47,7 @@ flatpaks:
 desktop_apps:
   - alacritty
   - code
+  - ghostty
   - google-chrome-stable
   - gnome-extensions-app
   - gnome-tweaks
@@ -57,4 +58,5 @@ clean_apps:
   - gnome-maps
   - rhythmbox
   - mediawriter
+  - ptyxis
   - gnome-connections

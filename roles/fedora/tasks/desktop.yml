@@ -17,6 +17,12 @@
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     gpgcheck: true
 
+- name: Enable ghostty COPR repository
+  community.general.copr:
+    state: enabled
+    name: scottames/ghostty
+  become: true
+
 - name: Install Desktop apps
   dnf:
     name: '{{ item }}'
@@ -28,3 +34,15 @@
   copy:
     src: '{{ role_path }}/files/alacritty/'
     dest: '~/.config/alacritty/'
+
+- name: Create ghostty config dir
+  file:
+    path: ~/.config/ghostty
+    state: directory
+    mode: '0755'
+
+- name: Config ghostty
+  copy:
+    src: '{{ role_path }}/files/ghostty/config'
+    dest: '~/.config/ghostty'
+    mode: '644'
