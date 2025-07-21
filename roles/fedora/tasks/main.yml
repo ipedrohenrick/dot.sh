@@ -1,10 +1,4 @@
 ---
-- name: Upgrade all packages
-  become: true
-  dnf:
-    name: "*"
-    state: latest
-
 - name: Install add-ons
   become: true
   dnf:
