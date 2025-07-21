@@ -1,0 +1,11 @@
+---
+- name: Create fonts dir
+  file:
+    path: ~/.local/share/fonts
+    state: directory
+    mode: '0755'
+
+- name: Install Jetbrains Nerd Fonts
+  unarchive:
+    src: '{{ role_path }}/files/fonts/jetbrains-nerd-font-mono.zip'
+    dest: ~/.local/share/fonts
