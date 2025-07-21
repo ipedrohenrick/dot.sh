@@ -22,4 +22,4 @@ blink_interval = 500
 blink_timeout = 0
 
 [terminal]
-shell = { program = "/bin/tmux", args = ["new-session", "-A", "-s", "main"] }
+shell = '/bin/zsh'
