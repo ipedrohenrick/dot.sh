@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 command = /bin/zsh
 shell-integration = zsh
 theme = catppuccin-mocha
@@ -5,3 +7,6 @@ font-family = "JetBrainsMono Nerd Font Mono"
 cursor-style = bar
 window-theme = ghostty
 gtk-titlebar-hide-when-maximized = true
+
+keybind = ctrl+slash=text:/
+keybind = shift+ctrl+slash=text:?
