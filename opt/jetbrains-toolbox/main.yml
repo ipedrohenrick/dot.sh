@@ -1,0 +1,31 @@
+---
+- name: Install Jetbrains Toolbox
+  hosts: localhost
+  vars:
+    jetbrains_toolbox_build: 2.7.0.48109
+    jetbrains_toolbox_dir: ~/.jetbrains
+  tasks:
+    - name: Verify if installed
+      stat:
+        path: "{{ jetbrains_toolbox_dir }}/bin/jetbrains-toolbox"
+      register: jetbrains_bin
+
+    - name: Install Toolbox
+      when: not jetbrains_bin.stat.exists
+      block:
+        - name: Download tar.gz
+          get_url:
+            url: "https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ jetbrains_toolbox_build }}.tar.gz"
+            dest: /tmp/jetbrains.tar.gz
+
+        - name: Extract tar.gz
+          unarchive:
+            src: /tmp/jetbrains.tar.gz
+            dest: ~/
+
+        - name: Rename dir
+          command: mv ~/jetbrains-toolbox-{{ jetbrains_toolbox_build }} {{ jetbrains_toolbox_dir }}
+
+        - name: Finish install
+          command: "{{ jetbrains_toolbox_dir }}/bin/jetbrains-toolbox"
+          changed_when: false
