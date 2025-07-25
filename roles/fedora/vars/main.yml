@@ -51,6 +51,7 @@ desktop_apps:
   - google-chrome-stable
   - gnome-extensions-app
   - gnome-tweaks
+  - nautilus-python
   - remmina
 
 clean_apps:
