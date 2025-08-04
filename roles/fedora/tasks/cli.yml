@@ -1,11 +1,4 @@
 ---
-# TERRAFORM
-- name: Config Hashicorp repo
-  become: true
-  command: dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-  args:
-    creates: /etc/yum.repos.d/hashicorp.repo
-
 # ENVS
 - name: Config global variables
   become: true

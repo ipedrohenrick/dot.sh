@@ -4,13 +4,13 @@ cli_tools:
   - fd-find
   - fzf
   - htop
+  - opentofu
   - neovim
   - nodejs
   - python3-pip
   - python3-neovim
   - ripgrep
   - tmux
-  - terraform
   - uv
   - vagrant
   - zoxide
