@@ -1,0 +1,25 @@
+---
+- name: Install vagrant
+  ansible.builtin.dnf:
+    name: "@vagrant"
+    state: present
+
+- name: Enable libvirt service
+  become: true
+  ansible.builtin.systemd_service:
+    name: libvirt
+    state: started
+    enabled: true
+
+- name: Ensure group docker exists
+  become: true
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Append the group libvirt to user
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    groups: libvirt
+    append: true

@@ -12,7 +12,6 @@ cli_tools:
   - ripgrep
   - tmux
   - uv
-  - vagrant
   - zoxide
   - zsh
 
@@ -53,6 +52,7 @@ desktop_apps:
   - gnome-tweaks
   - nautilus-python
   - remmina
+  - virt-manager
 
 clean_apps:
   - gnome-boxes
