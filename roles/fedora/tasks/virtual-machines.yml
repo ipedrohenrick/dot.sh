@@ -1,13 +1,14 @@
 ---
 - name: Install vagrant
+  become: true
   ansible.builtin.dnf:
     name: "@vagrant"
     state: present
 
-- name: Enable libvirt service
+- name: Enable libvirtd service
   become: true
   ansible.builtin.systemd_service:
-    name: libvirt
+    name: libvirtd
     state: started
     enabled: true
 
