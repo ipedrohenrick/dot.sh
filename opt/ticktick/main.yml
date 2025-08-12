@@ -1,0 +1,12 @@
+---
+- name: Install TickTick
+  hosts: localhost
+  vars:
+    ticktick_url: https://d2atcrkye2ik4e.cloudfront.net/download/linux/linux_rpm_x64/ticktick-6.0.40-x86_64.rpm
+  tasks:
+    - name: Install remote package
+      become: true
+      ansible.builtin.dnf:
+        name: "{{ ticktick_url }}"
+        state: present
+        disable_gpg_check: true
