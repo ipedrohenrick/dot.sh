@@ -1,1 +1,2 @@
 export EDITOR=nvim
+export VAGRANT_DEFAULT_PROVIDER=virtualbox

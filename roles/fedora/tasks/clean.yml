@@ -1,25 +1,25 @@
 ---
 - name: Uninstall unused apps
-  dnf:
+  become: true
+  ansible.builtin.dnf:
     name: '{{ item }}'
     state: absent
   loop: '{{ clean_apps }}'
-  become: true
 
 - name: Disable pycharm copr
-  community.general.copr:
-    state: disabled
-    name: phracek/PyCharm
   become: true
+  community.general.copr:
+    state: absent
+    name: phracek/PyCharm
 
 - name: Disable abrt service
-  systemd_service:
+  become: true
+  ansible.builtin.service:
     name: abrtd
     state: stopped
     enabled: false
-  become: true
 
 - name: Autoremove unneded packages
-  dnf:
-    autoremove: true
   become: true
+  ansible.builtin.dnf:
+    autoremove: true

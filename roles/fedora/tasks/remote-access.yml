@@ -1,7 +1,7 @@
 ---
 - name: Enable SSH service
   become: true
-  systemd_service:
+  ansible.builtin.service:
     name: sshd
     state: started
     enabled: true
@@ -9,13 +9,13 @@
 
 - name: Install tailscale
   become: true
-  dnf:
+  ansible.builtin.dnf:
     name: tailscale
     state: present
 
 - name: Enable tailscale service
   become: true
-  systemd_service:
+  ansible.builtin.service:
     name: tailscaled
     state: started
     enabled: true

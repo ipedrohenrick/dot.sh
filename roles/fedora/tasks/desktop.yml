@@ -8,7 +8,7 @@
 
 - name: Install vscode repo
   become: true
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: code
     description: Visual Studio Code
     file: vscode
@@ -24,25 +24,25 @@
   become: true
 
 - name: Install Desktop apps
-  dnf:
+  ansible.builtin.dnf:
     name: '{{ item }}'
     state: present
   loop: '{{ desktop_apps }}'
   become: true
 
 - name: Config Alacritty 
-  copy:
+  ansible.builtin.copy:
     src: '{{ role_path }}/files/alacritty/'
     dest: '~/.config/alacritty/'
 
 - name: Create ghostty config dir
-  file:
+  ansible.builtin.file:
     path: ~/.config/ghostty
     state: directory
     mode: '0755'
 
 - name: Config ghostty
-  copy:
+  ansible.builtin.copy:
     src: '{{ role_path }}/files/ghostty/config'
     dest: '~/.config/ghostty'
     mode: '644'

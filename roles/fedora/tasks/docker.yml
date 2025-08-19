@@ -1,33 +1,33 @@
 ---
 - name: Add docker repository
   become: true
-  command: dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
+  ansible.builtin.command: dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
   args:
     creates: /etc/yum.repos.d/docker-ce.repo
 
 - name: Install docker packages
   become: true
-  dnf:
+  ansible.builtin.dnf:
     name: '{{ item }}'
     state: present
   loop: '{{ docker_packages }}'
 
 - name: Enable docker service
   become: true
-  systemd_service:
+  ansible.builtin.service:
     name: docker
     state: started
     enabled: true
 
 - name: Ensure group docker exists
   become: true
-  group:
+  ansible.builtin.group:
     name: docker
     state: present
 
 - name: Append the group docker to user
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user }}"
     groups: docker
     append: true

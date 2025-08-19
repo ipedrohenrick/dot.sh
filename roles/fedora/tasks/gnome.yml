@@ -1,18 +1,18 @@
 ---
 - name: Check if WhiteSur icon theme is installed
-  stat:
+  ansible.builtin.stat:
     path: /usr/share/icons/WhiteSur
   register: whitesur_dir
 
 - name: Confirm reinstallation of icon theme
-  pause:
+  ansible.builtin.pause:
     prompt: Reinstall WhiteSur icon theme?(Y/N)
     echo: true
   when: whitesur_dir.stat.exists and whitesur_dir.stat.isdir
   register: reinstall_white_sur_icon_theme
 
 - name: Clone WhiteSur repo
-  git:
+  ansible.builtin.git:
     repo: https://github.com/vinceliuice/WhiteSur-icon-theme.git
     dest: /tmp/whitesur
   register: whitesur_clone
@@ -20,12 +20,12 @@
 
 - name: Install WhiteSur icon theme
   become: true
-  command: /tmp/whitesur/install.sh -a -d /usr/share/icons
+  ansible.builtin.command: /tmp/whitesur/install.sh -a -d /usr/share/icons
   when: whitesur_clone.changed
 
 - name: Set custom settings in GDM
   become: true
-  copy:
+  ansible.builtin.copy:
     src: '{{ role_path }}/files/gdm/99-custom-settings'
     dest: '/etc/dconf/db/gdm.d'
     owner: root
@@ -34,7 +34,7 @@
 
 - name: Set custom settings in gnome
   become: true
-  copy:
+  ansible.builtin.copy:
     src: '{{ role_path }}/files/gnome/99-custom-settings'
     dest: '/etc/dconf/db/local.d/'
     owner: root
@@ -42,7 +42,7 @@
     mode: '644'
 
 - name: Reset dconf settings
-  command: dconf reset {{ item }}
+  ansible.builtin.command: dconf reset {{ item }}
   loop:
     - /org/gnome/desktop/background/picture-uri
     - /org/gnome/desktop/background/picture-uri-dark
@@ -50,4 +50,4 @@
 
 - name: Update dconf
   become: true
-  command: dconf update
+  ansible.builtin.command: dconf update

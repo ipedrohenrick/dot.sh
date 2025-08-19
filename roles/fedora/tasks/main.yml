@@ -1,16 +1,19 @@
 ---
 - name: Install add-ons
   become: true
-  dnf:
+  ansible.builtin.dnf:
     name: '{{ item }}'
     state: present
   loop: '{{ addons }}'
 
 - name: Create config dir
-  file:
+  ansible.builtin.file:
     path: ~/.config
     state: directory
     mode: '0755'
+
+- name: Enable RPM fusion
+  include_tasks: rpmfusion.yml
 
 - name: Install fonts
   include_tasks: fonts.yml
@@ -37,5 +40,5 @@
   include_tasks: virtual-machines.yml
 
 - name: Finish message
-  debug:
+  ansible.builtin.debug:
     msg: 'Reboot System now!'
