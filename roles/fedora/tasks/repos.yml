@@ -1,0 +1,53 @@
+---
+- name: Remove RPM fusion packages repo
+  become: true
+  ansible.builtin.file:
+    path: "/etc/yum.repos.d/rpmfusion-nonfree-{{ item }}.repo"
+    state: absent
+  loop:
+    - nvidia-driver
+    - steam
+
+- name: Get Fedora version
+  ansible.builtin.command: rpm -E %fedora
+  register: fedora_version
+
+- name: Enable RPM fusion repo
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm"
+    - "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm"
+
+- name: Add mise repository
+  become: true
+  ansible.builtin.command: dnf config-manager addrepo --from-repofile=https://mise.jdx.dev/rpm/mise.repo
+  args:
+    creates: /etc/yum.repos.d/mise.repo
+
+- name: Add docker repository
+  become: true
+  ansible.builtin.command: dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install vscode repo
+  become: true
+  ansible.builtin.yum_repository:
+    name: code
+    description: Visual Studio Code
+    file: vscode
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    enabled: true
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    gpgcheck: true
+
+- name: Enable ghostty COPR repository
+  community.general.copr:
+    state: enabled
+    name: scottames/ghostty
+  become: true
+
+

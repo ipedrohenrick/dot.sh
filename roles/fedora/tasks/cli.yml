@@ -7,20 +7,12 @@
     dest: '/etc/profile.d/custom-envs.sh'
     mode: '777'
 
-# MISE
-- name: Add mise repository
-  become: true
-  ansible.builtin.command: dnf config-manager addrepo --from-repofile=https://mise.jdx.dev/rpm/mise.repo
-  args:
-    creates: /etc/yum.repos.d/mise.repo
-
 - name: Install mise
   become: true
   ansible.builtin.dnf:
     name: 'mise'
     state: present
 
-# Install Apps
 - name: Install CLI tools
   become: true
   ansible.builtin.dnf:
@@ -44,7 +36,6 @@
     - .zshrc
     - .p10k.zsh
 
-# TMUX
 - name: Config Tmux
   ansible.builtin.copy:
     src: '{{ role_path }}/files/tmux/.tmux.conf'
@@ -67,7 +58,6 @@
   ansible.builtin.command: '~/.tmux/plugins/tpm/bin/install_plugins'
   when: tpm_clone.changed
 
-# NEOVIM
 - name: Check if Neovim configuration is installed
   ansible.builtin.stat:
     path: '~/.config/nvim' 
@@ -85,7 +75,6 @@
     name: neovim
     global: true
 
-# GIT
 - name: Config git username
   community.general.git_config:
     name: user.name

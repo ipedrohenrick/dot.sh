@@ -54,6 +54,7 @@ desktop_apps:
   - nautilus-python
   - remmina
   - thunderbird
+  - VirtualBox
 
 clean_apps:
   - gnome-boxes

@@ -12,8 +12,8 @@
     state: directory
     mode: '0755'
 
-- name: Enable RPM fusion
-  include_tasks: rpmfusion.yml
+- name: Enable repos
+  include_tasks: repos.yml
 
 - name: Install fonts
   include_tasks: fonts.yml
@@ -35,9 +35,6 @@
 
 - name: Enable remote access
   include_tasks: remote-access.yml
-
-- name: Enable virtual machines
-  include_tasks: virtual-machines.yml
 
 - name: Finish message
   ansible.builtin.debug:
